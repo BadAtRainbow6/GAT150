@@ -9,8 +9,8 @@ public:
 		Nobody
 	};
 public:
-	Enemy(const kiko::Transform& transform, std::shared_ptr<kiko::Model> model, eType type) :
-		Actor{ transform, model }
+	Enemy(const kiko::Transform& transform, eType type) :
+		Actor{ transform }
 	{
 		m_type = type;
 		m_turnrate = kiko::Pi;

@@ -1,5 +1,5 @@
 #include "Model.h"
-#include "Core/Vector2.h"
+#include "Renderer.h"
 #include <sstream>
 
 namespace kiko

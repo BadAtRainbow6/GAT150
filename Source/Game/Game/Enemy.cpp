@@ -32,7 +32,7 @@ void Enemy::Update(float dt) {
 
 	if (m_fireTimer <= 0 && GetFacingPlayer() && m_type != eType::Nobody) {
 		kiko::Transform transform {m_transform.position, m_transform.rotation, 1};
-		std::unique_ptr<Weapon> weapon = std::make_unique<Weapon>(150, transform, m_model, 3.0f);
+		std::unique_ptr<Weapon> weapon = std::make_unique<Weapon>(150, transform, 3.0f);
 		weapon->m_tag = "Enemy";
 		m_scene->Add(std::move(weapon));
 		kiko::g_audioSystem.PlayOneShot("hit");

@@ -4,8 +4,8 @@
 class Player : public kiko::Actor
 {
 public:
-	Player(float speed, float turnrate, const kiko::Transform& transform, std::shared_ptr<kiko::Model> model) :
-		Actor{ transform, model},
+	Player(float speed, float turnrate, const kiko::Transform& transform) :
+		Actor{ transform },
 		m_speed{ speed },
 		m_turnrate { turnrate }
 	{}

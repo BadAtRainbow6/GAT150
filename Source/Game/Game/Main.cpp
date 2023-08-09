@@ -1,22 +1,22 @@
 #include "Core/Core.h"
 #include "Core/Time.h"
-#include "Renderer/Renderer.h"
-#include "Renderer/ModelManager.h"
+
 #include "Input/InputSystem.h"
 #include "Audio/AudioSystem.h"
 #include "Player.h"
 #include "Enemy.h"
-#include "Framework/Scene.h"
-#include "Framework/Emitter.h"
-#include "Renderer/ParticleSystem.h"
+
+#include "Framework/Framework.h"
+
+#include "Renderer/Renderer.h"
+
 #include "KHDarkFlight.h"
 
 #include <iostream>
 #include <vector>
 #include <memory>
-#include "Renderer/Font.h"
-#include "Renderer/Text.h"
-
+#include <array>
+#include <map>
 using namespace std;
 
 class Star {
@@ -41,14 +41,43 @@ public:
 	kiko::Vector2 m_vel;
 };
 
+void print(int count, ...)
+{
+	va_list args;
+
+	va_start(args, count);
+	for (int i = 0; i < count; ++i)
+	{
+		std::cout << va_arg(args, const char*) << std::endl;
+	}
+	va_end(args);
+}
+
+void zero(int& v) {
+	v = 0;
+}
+
+void zero(int* v) {
+	*v = 0;
+}
+
+void zero_ref(int& v) {
+	cout << v << endl;
+}
+
+void print(const std::string& s) {
+	cout << s << endl;
+}
+
+class uptr {
+public:
+};
+
 int main(int argc, char* argv[])
 {
-	std::unique_ptr<int> up = std::make_unique<int>(10);
+	INFO_LOG("Start Game...");
 
-	int m1 = kiko::Max(4.0f, 3.0f);
-	int m2 = kiko::Max(4, 3);
-	int m3 = kiko::Max(4L, 3L);
-
+	kiko::MemoryTracker::Initialize();
 	kiko::seedRandom((unsigned int)time(nullptr));
 	kiko::setFilePath("assets");
 
@@ -61,8 +90,6 @@ int main(int argc, char* argv[])
 
 	unique_ptr<KHDarkFlight> game = make_unique<KHDarkFlight>();
 	game->Initialize();
-	
-	//std::vector<kiko::vec2> points{ { -10, 5 }, { 10, 5 }, { 0,-5 }, { -10, 5 } };
 
 	kiko::vec2 v(5, 5);
 	v.Normalize();

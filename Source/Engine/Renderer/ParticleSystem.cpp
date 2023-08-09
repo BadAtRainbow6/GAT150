@@ -12,7 +12,7 @@ namespace kiko
 		}
 	}
 
-	void ParticleSystem::Draw(kiko::Renderer& renderer)
+	void ParticleSystem::Draw(Renderer& renderer)
 	{
 		for (auto& particle : m_particles)
 		{
