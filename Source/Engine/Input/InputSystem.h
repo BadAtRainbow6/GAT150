@@ -1,5 +1,5 @@
 #pragma once
-#include "Core/Core.h"
+#include "Core/Math/Vector2.h"
 #include <SDL2-2.28.0/include/SDL.h>
 #include <vector>
 #include <array>

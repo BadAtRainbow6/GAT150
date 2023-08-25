@@ -1,2 +1,11 @@
-INFO: Main.cpp(78) Start Game...
-WARNING: Texture.cpp(32) Surface is empty...
+INFO: Factory.h(55) Class registered...Weapon
+INFO: Factory.h(55) Class registered...Object
+INFO: Factory.h(55) Class registered...TextRenderComponent
+INFO: Factory.h(55) Class registered...Sprite
+INFO: Factory.h(55) Class registered...ModelRenderComponent
+INFO: Factory.h(55) Class registered...EnginePhysicsComponent
+INFO: Factory.h(55) Class registered...CircleCollisionComponent
+INFO: Factory.h(55) Class registered...Actor
+INFO: Factory.h(55) Class registered...Sprite
+INFO: Main.cpp(96) Start Game...
+INFO: Factory.h(62) Prototype Class registered...Bullet

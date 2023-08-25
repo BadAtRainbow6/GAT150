@@ -1,6 +1,6 @@
 #pragma once
-#include "Core/Core.h"
 #include "Particle.h"
+#include <vector>
 
 namespace kiko
 {

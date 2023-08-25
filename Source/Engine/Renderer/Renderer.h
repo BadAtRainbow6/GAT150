@@ -5,7 +5,7 @@
 #include "Text.h"
 #include "Particle.h"
 #include "ParticleSystem.h"
-
+#include "Core/Math/Transform.h"
 #include <string>
 #include <SDL2-2.28.0/include/SDL.h>
 namespace kiko
@@ -30,7 +30,7 @@ namespace kiko
         void DrawLine(float x1, float y1, float x2, float y2);
         void DrawPoint(int x, int y);
         void DrawPoint(float x, float y);
-        void DrawTexture(class Texture* texture, float x, float y, float angle = 0.0f);
+        void DrawTexture(class Texture* texture, const Transform& transform);
 
         int GetWidth() const { return m_width; };
         int GetHeight() const { return m_height; };

@@ -8,34 +8,39 @@ namespace kiko
 	class Vector3
 	{
 	public:
-		float x, y;
+		float x, y, z;
 
 	public:
-		Vector3() : x{ 0 }, y{ 0 } {}
-		Vector3(float v) : x{ v }, y{ v } {}
-		Vector3(float x, float y) : x{ x }, y{ y } {}
-		Vector3(int x, int y) : x{ (float)x }, y{ (float)y } {}
+		Vector3() : x{ 0 }, y{ 0 }, z{ 0 } {}
+		Vector3(float v) : x{ v }, y{ v }, z{ v } {}
+		Vector3(float x, float y, float z) : x{ x }, y{ y }, z{ z } {}
+		Vector3(int x, int y, int z) : x{ (float)x }, y{ (float)y }, z{ (float)z } {}
 
-		Vector3 Add(const Vector3& v) const { return Vector3(x + v.x, y + v.y); }
-		Vector3 operator + (const Vector3& v) const { return Vector3(x + v.x, y + v.y); }
-		Vector3 operator - (const Vector3& v) const { return Vector3(x - v.x, y - v.y); }
-		Vector3 operator * (const Vector3& v) const { return Vector3(x * v.x, y * v.y); }
-		Vector3 operator / (const Vector3& v) const { return Vector3(x / v.x, y / v.y); }
+		float operator [] (size_t index) const { return (&x)[index]; }
+		float& operator [] (size_t index) { return (&x)[index]; }
 
-		Vector3 operator + (float s) const { return Vector3(x + s, y + s); }
-		Vector3 operator - (float s) const { return Vector3(x - s, y - s); }
-		Vector3 operator * (float s) const { return Vector3(x * s, y * s); }
-		Vector3 operator / (float s) const { return Vector3(x / s, y / s); }
+		Vector3 operator - () const { return Vector3(-x, -y, -z); }
+
+		Vector3 Add(const Vector3& v) const { return Vector3(x + v.x, y + v.y, z + v.z); }
+		Vector3 operator + (const Vector3& v) const { return Vector3(x + v.x, y + v.y, z + v.z); }
+		Vector3 operator - (const Vector3& v) const { return Vector3(x - v.x, y - v.y, z - v.z); }
+		Vector3 operator * (const Vector3& v) const { return Vector3(x * v.x, y * v.y, z * v.z); }
+		Vector3 operator / (const Vector3& v) const { return Vector3(x / v.x, y / v.y, z / v.z); }
+
+		Vector3 operator + (float s) const { return Vector3(x + s, y + s, z + s); }
+		Vector3 operator - (float s) const { return Vector3(x - s, y - s, z - s); }
+		Vector3 operator * (float s) const { return Vector3(x * s, y * s, z * s); }
+		Vector3 operator / (float s) const { return Vector3(x / s, y / s, z / s); }
 
 		Vector3& operator += (const Vector3& v) { x += v.x; y += v.y; return *this; }
 		Vector3& operator -= (const Vector3& v) { x -= v.x; y -= v.y; return *this; }
 		Vector3& operator *= (const Vector3& v) { x *= v.x; y *= v.y; return *this; }
 		Vector3& operator /= (const Vector3& v) { x /= v.x; y /= v.y; return *this; }
 
-		float LengthSqr() { return (x * x) + (y * y); }
-		float Length() { return std::sqrt(LengthSqr()); }
+		float LengthCube() { return (x * x) + (y * y) + (z * z); }
+		float Length() { return std::sqrt(LengthCube()); }
 
-		float DistanceSqr(const Vector3& v) const { return (v - *this).LengthSqr(); }
+		float DistanceCube(const Vector3& v) const { return (v - *this).LengthCube(); }
 		float Distance(const Vector3& v) const { return (v - *this).Length(); }
 
 		Vector3 Normalized() { return  *this / Length(); }

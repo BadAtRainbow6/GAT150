@@ -7,8 +7,8 @@ namespace kiko
 	constexpr float DoublePi = Pi * 2;
 	constexpr float HalfPi = Pi / 2;
 
-	constexpr float RadiansToDegrees(float radians) { return radians * 180.0f / Pi; }
-	constexpr float DegreestoRadians(float degrees) { return degrees * Pi / 180.0f; }
+	constexpr float RadiansToDegrees(float radians) { return radians * (180.0f / Pi); }
+	constexpr float DegreestoRadians(float degrees) { return degrees * (Pi / 180.0f); }
 
 	constexpr int Wrap(int value, int max) { return (value % max) + (value < 0) ? max : 0; }
 

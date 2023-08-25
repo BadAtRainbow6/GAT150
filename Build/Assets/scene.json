@@ -1,0 +1,60 @@
+{
+	"actors":[
+		{
+			"type": "Actor",
+			"name": "Background",
+			"persistant": true,
+			"transform": {
+				"position": [ 0, 0 ],
+				"scale": 2.0,
+				"rotation": 0
+			},
+			"components": [
+				{
+					"type": "Sprite",
+					"textureName": "space.jpg"
+				}
+			]
+		},
+		{
+			"type": "Weapon",
+			"name": "Bullet",
+			"prototype": true,
+			"tag": "Player",
+			"lifespan": 2,
+			"transform": {
+				"position": [ 400, 300 ],
+				"scale": 2.0,
+				"rotation": 0
+			},
+			"speed": 300,
+			"components": [
+				{
+					"type": "Sprite",
+					"textureName": "bullet.png"
+				},
+				{
+					"type": "CircleCollisionComponent"
+				}
+			]
+		},
+		{
+			"type": "Actor",
+			"name": "Title",
+			"persistant": true,
+			"transform": {
+				"position": [ 400, 300 ],
+				"scale": 2,
+				"rotation": 0
+			},
+			"components": [
+				{
+					"type": "TextRenderComponent",
+					"fontName": "aYummyApology.ttf",
+					"fontSize": 24,
+					"text": "Kingdom Hearts: Dark Flight"
+				}
+			]
+		}
+	]
+}

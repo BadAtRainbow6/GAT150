@@ -1,21 +1,18 @@
 #pragma once
 #include "Framework/Actor.h"
 
-class Weapon : public kiko::Actor
-{
-public:
-    Weapon() = default;
-    Weapon(float speed, const kiko::Transform& transform, float lifespan) :
-        Actor{ transform },
-        m_speed{ speed }
+namespace kiko {
+    class Weapon : public kiko::Actor
     {
-        m_lifespan = lifespan;
-    }
+    public:
+        CLASS_DECLARATION(Weapon)
 
-    void Update(float dt) override;
-    void OnCollision(Actor* other) override;
+        bool Initialize() override;
+        void Update(float dt) override;
+        /*void OnCollision(Actor* other) override;*/
 
-private:
-    float m_speed = 0;
-    float m_turnRate = 0;
-};
+    private:
+        float speed = 0;
+        float m_turnRate = 0;
+    };
+}

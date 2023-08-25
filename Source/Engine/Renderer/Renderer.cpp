@@ -1,4 +1,5 @@
 #include "Renderer.h"
+#include "Core/Core.h"
 #include "Texture.h"
 #include "SDL2-2.28.0/include/SDL.h"
 #include "SDL2-2.28.0/include/SDL_ttf.h"
@@ -69,18 +70,20 @@ namespace kiko {
         SDL_RenderDrawPoint(m_renderer, (int)x, (int)y);
     }
 
-    void Renderer::DrawTexture(Texture* texture, float x, float y, float angle)
+    void Renderer::DrawTexture(Texture* texture, const Transform& transform)
     {
-        vec2 size = texture->GetSize();
-            
-        SDL_Rect dest;
-        dest.x = x;
-        dest.y = y;
-        dest.w = size.x;
-        dest.h = size.y;
+        mat3 mx = transform.GetMatrix();
 
-        // https://wiki.libsdl.org/SDL2/SDL_RenderCopyEx
-        SDL_RenderCopyEx(m_renderer, texture->m_texture, NULL, &dest, angle, NULL, SDL_FLIP_NONE);
+        vec2 position = mx.GetTranslation();
+        vec2 size = texture->GetSize() * mx.GetScale();
+
+        SDL_Rect dest;
+        dest.x = (int)position.x;
+        dest.y = (int)position.y;
+        dest.w = (int)size.x;
+        dest.h = (int)size.y;
+
+        SDL_RenderCopyEx(m_renderer, texture->m_texture, NULL, &dest, RadiansToDegrees(mx.GetRotation()), NULL, SDL_FLIP_NONE);
     }
 }
 

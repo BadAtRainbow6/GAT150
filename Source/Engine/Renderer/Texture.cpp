@@ -41,9 +41,10 @@ namespace kiko
 		}
 		return true;
 	}
+
 	vec2 Texture::GetSize()
 	{
-		ASSERT_LOG(!m_texture, "Can't get size as there is no texture...");
+		ASSERT_LOG(m_texture, "Can't get size as there is no texture...");
 		SDL_Point point;
 		SDL_QueryTexture(m_texture, nullptr, nullptr, &point.x, &point.y);
 		return vec2{ point.x, point.y };

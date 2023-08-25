@@ -1,6 +1,6 @@
 #pragma once
 #include "Core/Math/Vector2.h"
-#include "Core/Core.h"
+#include "Core/Math/Color.h"
 
 namespace kiko {
 	struct ParticleData
